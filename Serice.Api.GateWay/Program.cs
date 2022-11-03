@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Service.Api.Librery
+namespace Serice.Api.GateWay
 {
     public class Program
     {
@@ -21,6 +21,10 @@ namespace Service.Api.Librery
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.AddJsonFile($"Ocelot.json");
+            });
     }
 }
