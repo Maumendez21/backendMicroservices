@@ -1,0 +1,120 @@
+<form
+  [formGroup]="bookForm"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="10px"
+  fxFlex="100%"
+  (ngSubmit)="submit()"
+>
+  <h1 mat-dialog-title>Agregar nuevo Libro</h1>
+  <mat-dialog-content>
+    <section
+      fxLayoutAlign="center"
+      style="margin-top: 10px; margin-bottom: 10px"
+    >
+      <div>
+        <!-- 
+    [formGroup]="bookForm"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+      fxFlex="100%"
+      (ngSubmit)="submit()" -->
+        <!-- input titulo -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Título</mat-label>
+          <input
+            type="text"
+            formControlName="title"
+            name="title"
+            matInput
+            placeholder="Título del libro"
+          />
+
+          <mat-error *ngIf="bookForm.get('title')?.hasError('required')"
+            >El título es obligatorio</mat-error
+          >
+        </mat-form-field>
+
+        <!-- input descripción -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <input
+            type="text"
+            formControlName="description"
+            name="description"
+            matInput
+            placeholder="Descripción del libro"
+          />
+
+          <mat-error *ngIf="bookForm.get('description')?.hasError('required')"
+            >La descripción es obligatoria</mat-error
+          >
+        </mat-form-field>
+
+        <!-- input precio  -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Precio</mat-label>
+          <input
+            type="number"
+            formControlName="price"
+            name="price"
+            matInput
+            placeholder="Precio del libro"
+          />
+
+          <mat-error *ngIf="bookForm.get('price')?.hasError('required')"
+            >El precio es obligatorio</mat-error
+          >
+        </mat-form-field>
+
+        <!-- select de autor -->
+        <mat-form-field appearance="fill">
+          <mat-label>Seleccione el Autor</mat-label>
+          <mat-select
+            formControlName="autor"
+            name="autor"
+            (selectionChange)="selected($event)"
+          >
+            <mat-option *ngFor="let author of authors" [value]="author.id">
+              {{ author.name }} {{author.lastname}}
+            </mat-option>
+          </mat-select>
+
+          <mat-error *ngIf="bookForm.get('autor')?.hasError('required')"
+            >El autor es obligatorio</mat-error
+          >
+        </mat-form-field>
+
+        <!-- datepicker -->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de publicación</mat-label>
+          <input
+            matInput
+            placeholder="Seleccione la fecha de publicación"
+            formControlName="datePublication"
+            [matDatepicker]="picker"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </section>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true">Cancelar</button>
+    <button
+      mat-button
+      [mat-dialog-close]="true"
+      [disabled]="!bookForm.valid"
+      color="primary"
+      type="submit"
+    >
+      Guardar
+    </button>
+  </mat-dialog-actions>
+</form>

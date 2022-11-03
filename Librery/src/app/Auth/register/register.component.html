@@ -1,0 +1,100 @@
+<section class="mt-5">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="registerForm"
+    (ngSubmit)="register()"
+  >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input
+        type="text"
+        formControlName="name"
+        name="name"
+        matInput
+        placeholder="Nombre"
+      />
+
+      <mat-error *ngIf="registerForm.get('name')?.hasError('required')"
+        >El nombre es obligatorio</mat-error
+      >
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Apellidos</mat-label>
+      <input
+        type="text"
+        formControlName="lastname"
+        name="lastname"
+        matInput
+        placeholder="Apellidos"
+      />
+
+      <mat-error *ngIf="registerForm.get('lastname')?.hasError('required')"
+        >Los apellidos son obligatorios</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input
+        type="text"
+        formControlName="username"
+        name="username"
+        matInput
+        placeholder="Username"
+      />
+
+      <mat-error *ngIf="registerForm.get('username')?.hasError('required')"
+        >El username es obligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>E-Mail</mat-label>
+      <input
+        type="email"
+        formControlName="email"
+        name="email"
+        matInput
+        placeholder="example@example.com"
+      />
+
+      <mat-error *ngIf="registerForm.get('email')?.hasError('required')"
+        >El email es obligatorio</mat-error
+      >
+      <mat-error *ngIf="!registerForm.get('email')?.hasError('required')"
+        >El formato del email es incorrecto</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field
+      hintLabel="El password debe tener 8 o más caracteres"
+      appearance="fill"
+    >
+      <mat-label>Contraseña</mat-label>
+      <input
+        formControlName="password"
+        name="password"
+        type="password"
+        matInput
+      />
+      <mat-error *ngIf="registerForm.get('password')?.hasError('required')"
+        >El password es obligatorio</mat-error
+      >
+      <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')"
+        >El password debe tener mas de 8 caracteres</mat-error
+      >
+    </mat-form-field>
+
+    <button
+      type="submit"
+      [disabled]="!registerForm.valid"
+      mat-raised-button
+      color="primary"
+    >
+      Registrar
+    </button>
+  </form>
+</section>

@@ -1,0 +1,57 @@
+<section fxLayoutAlign="center">
+  <mat-card>
+    <form
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+    >
+      <mat-form-field appearance="fill">
+        <mat-label>E-Mail</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          name="email"
+          matInput
+          placeholder="example@example.com"
+        />
+
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')"
+          >El email es obligatorio</mat-error
+        >
+        <mat-error *ngIf="!loginForm.get('email')?.hasError('email')"
+          >El formato del email es incorrecto</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field
+        hintLabel="El password debe tener 8 o más caracteres"
+        appearance="fill"
+      >
+        <mat-label>Contraseña</mat-label>
+        <input
+          formControlName="password"
+          name="password"
+          type="password"
+          matInput
+        />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+          >El password es obligatorio</mat-error
+        >
+        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')"
+          >El password debe tener mas de 8 caracteres</mat-error
+        >
+      </mat-form-field>
+
+      <button
+        type="submit"
+        [disabled]="!loginForm.valid"
+        mat-raised-button
+        color="primary"
+      >
+        Entrar
+      </button>
+    </form>
+  </mat-card>
+</section>

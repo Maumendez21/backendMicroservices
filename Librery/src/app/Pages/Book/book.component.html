@@ -1,0 +1,60 @@
+<div fxLayoutAlign="center center">
+  <mat-form-field fxFlex="60%">
+    <input
+      matInput
+      type="text"
+      placeholder="Filtrar"
+      (keyup)="filter($event)"
+    />
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort (matSortChange)="orderColumns($event)">
+  <ng-container matColumnDef="title">
+    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header
+      >Title</mat-header-cell
+    >
+    <mat-cell mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header
+      >Descripción</mat-header-cell
+    >
+    <mat-cell mat-cell *matCellDef="let element">{{
+      element.description
+    }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="autor">
+    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header
+      >Autor</mat-header-cell
+    >
+    <mat-cell mat-cell *matCellDef="let element">{{ element.autor.nameComplet }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header
+      >Precio</mat-header-cell
+    >
+    <mat-cell mat-cell *matCellDef="let element">{{ element.price }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+<mat-paginator
+  (page)="eventPaginator($event)"
+  [pageSizeOptions]="pageCombo"
+  [length]="bookTotals"
+  #paginator
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+  [pageSize]="booksForPage"
+>
+</mat-paginator>
+
+<button mat-fab id="btn-Add" color="warn" (click)="openModal()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<!-- 
+showFirstLastButtons 
+               aria-label="Select page of periodic elements" -->

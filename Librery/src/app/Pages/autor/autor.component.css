@@ -1,0 +1,12 @@
+#btn-Add {
+    right: 45px;
+    bottom: 45px;
+    left: auto;
+    position: absolute;
+}
+
+mat-table,
+mat-paginator {
+    margin-left: 45px;
+    margin-right: 45px;
+}

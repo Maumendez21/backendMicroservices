@@ -1,0 +1,49 @@
+<div fxLayoutAlign="center center">
+  <mat-form-field fxFlex="60%">
+    <input
+      matInput
+      type="text"
+      placeholder="Filtrar"
+      (keyup)="filter($event.target)"
+    />
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="name">
+    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header
+      >Nombre</mat-header-cell
+    >
+    <mat-cell mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="lastname">
+    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header
+      >Apellido</mat-header-cell
+    >
+    <mat-cell mat-cell *matCellDef="let element">{{
+      element.lastname
+    }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="degreeAcademic">
+    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header
+      >Grado academico</mat-header-cell
+    >
+    <mat-cell mat-cell *matCellDef="let element">{{ element.degreeAcademic }}</mat-cell>
+  </ng-container>
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+  [pageSize]="4"
+>
+</mat-paginator>
+
+<button mat-fab id="btn-Add" color="warn" (click)="openModal()">
+  <mat-icon>add</mat-icon>
+</button>

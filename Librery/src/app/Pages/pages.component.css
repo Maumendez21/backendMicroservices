@@ -1,0 +1,29 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav{
+    height: 100%;
+}
+
+mat-sidenav{
+    width: 250px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+a:hover,
+a:active{
+    color: #dbcde6;
+}
+
+li{
+    text-decoration: none;
+}
+
+.navegation-menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}

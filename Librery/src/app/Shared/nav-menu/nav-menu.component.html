@@ -1,0 +1,50 @@
+<mat-nav-list>
+  <div class="" *ngIf="show">
+    <a
+      mat-list-item
+      routerLink="/books"
+      routerLinkActive="active"
+      (click)="onMenuToggle()"
+    >
+      <mat-icon>home</mat-icon>
+      <span class="navegation-list-label">Inicio</span>
+    </a>
+    <a
+      mat-list-item
+      routerLink="/authors"
+      routerLinkActive="active"
+      (click)="onMenuToggle()"
+    >
+      <mat-icon>home</mat-icon>
+      <span class="navegation-list-label">Autores</span>
+    </a>
+
+    <mat-list-item>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>eject</mat-icon>
+        <span>Salir</span>
+      </button>
+    </mat-list-item>
+  </div>
+
+  <div class="" *ngIf="!show">
+    <a
+      mat-list-item
+      routerLink="/register"
+      routerLinkActive="active"
+      (click)="onMenuToggle()"
+    >
+      <mat-icon>how_to_reg</mat-icon>
+      <span class="navegation-list-label">Registrate</span>
+    </a>
+    <a
+      mat-list-item
+      routerLink="/login"
+      routerLinkActive="active"
+      (click)="onMenuToggle()"
+    >
+      <mat-icon>login</mat-icon>
+      <span class="navegation-list-label">Inicia Sesión</span>
+    </a>
+  </div>
+</mat-nav-list>

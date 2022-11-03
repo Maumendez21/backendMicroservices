@@ -1,0 +1,21 @@
+a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+a:hover,
+a:active{
+    color: #dbcde6;
+}
+
+li{
+    text-decoration: none;
+}
+
+.navegation-menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
